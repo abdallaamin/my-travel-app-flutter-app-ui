@@ -1,0 +1,37 @@
+import 'package:flutter/material.dart';
+import 'package:myapp/components/card_rec.dart';
+import 'package:myapp/models/destionation.dart';
+
+
+class Recommended extends StatelessWidget {
+  const Recommended({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    List<Destination> destinations = [
+      Destination('assets/images/square-1.png', 'Japan Temple', '120',
+          'Osaka Street, japan'),
+      Destination('assets/images/square-3.png', 'Capura Mero', '100',
+          'Tokyo Street, japan'),
+      Destination(
+          'assets/images/square-4.png', 'Telaga', '80', 'Bandung, japan'),
+    ];
+    return SizedBox(
+      height: 250,
+      child: ListView.builder(
+        itemCount: destinations.length,
+        scrollDirection: Axis.horizontal,
+        physics: const BouncingScrollPhysics(),
+        itemBuilder: (context, index) {
+          var dest = destinations[index];
+
+          return CardRecommended(
+              image: dest.image,
+              name: dest.name,
+              price: dest.price,
+              location: dest.location);
+        },
+      ),
+    );
+  }
+}
